@@ -28,3 +28,30 @@ function addProjectDetails(e) {
 
 	console.log("User clicked on project " + idNumber);
 }
+function callback(result) {
+	console.log(result);
+	$("#testjs").click(function(e)) {
+	$.get("/project/random", addProject);
+	}
+}
+function addProject(result) {
+	var projectHTML = '<a href="#" class="thumbnail">' +
+	  '<img src="' + result['image'] + '" class="img">' +
+	  '<p>' + result['title'] + '</p>' +
+	  '<p><small>' + result['date'] +
+	  '</small></p></a>';
+  }
+  function projectClick(e) {
+    // prevent the page from reloading     
+    e.preventDefault();
+    // In an event handler, $(this) refers to     
+    // the object that triggered the event 
+	// Get the div ID, e.g., "project3"
+	var projectID = $(this).closest('.project').attr('id');
+	// get rid of 'project' from the front of the id 'project3'
+	var idNumber = projectID.substr('project'.length);
+
+	console.log("User clicked on project " + idNumber);    
+    $.get("http://URL", callBackFn)
+	$.post("http://URL", {"json":"json"}, callBackFn)
+}
